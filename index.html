@@ -1,0 +1,522 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Afterglow — Bringing the passion from California</title>
+  <meta name="description" content="Afterglow: sun-soaked California passion with a graffiti edge. Adults only, 18+.">
+  <meta name="robots" content="noindex">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Special+Gothic+Expanded+One&family=Inter:wght@400;500;800&display=swap" rel="stylesheet">
+  <script>document.documentElement.classList.add('js');</script>
+  <style>
+    :root {
+      /* Brand palette, from Afterglow Brand Guidelines v1.0 */
+      --green: #8CC97B;      /* Afterglow Green: logo fill, CTA */
+      --ink: #1D1D1B;        /* Ink Black: outlines, text */
+      --hot: #F80289;        /* Hot Pink: hero accent */
+      --bubble: #FD52A4;     /* Bubblegum: secondary pink */
+      --sun: #FBE324;        /* Sun Yellow: highlights, stickers */
+      --tangerine: #FE7826;  /* Tangerine: warm energy */
+      --graffiti: #F11041;   /* Graffiti Red: alerts */
+      --sky: #9BD6F4;        /* Sky Blue: backgrounds */
+      --forest: #003F01;     /* Forest: leaves, panels */
+      --paper: #F7F5EF;      /* Paper: web base */
+
+      --outline: 3px solid var(--ink);
+      --hard: 4px 4px 0 var(--ink);
+      --hard-lg: 8px 8px 0 var(--ink);
+      --spring: cubic-bezier(.34, 1.56, .64, 1);
+      --ease: cubic-bezier(.22, 1, .36, 1);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    html, body { margin: 0; }
+    body {
+      background: var(--paper);
+      color: var(--ink);
+      font-family: 'Inter', system-ui, sans-serif;
+      font-size: 16px;
+      line-height: 24px;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+    img { display: block; max-width: 100%; height: auto; }
+    a { color: inherit; }
+    h1, h2, h3, p, ul { margin: 0; padding: 0; }
+    ul { list-style: none; }
+    .visually-hidden {
+      position: absolute; width: 1px; height: 1px; overflow: hidden;
+      clip: rect(0 0 0 0); white-space: nowrap;
+    }
+
+    /* Display: Special Gothic Expanded One, caps. Taglines and headlines get the sticker treatment. */
+    h1, h2, h3 {
+      font-family: 'Special Gothic Expanded One', system-ui, sans-serif;
+      font-weight: 400;
+      text-transform: uppercase;
+      letter-spacing: -0.01em;
+      line-height: 1;
+    }
+
+    /* Labels: Inter ExtraBold, caps, +8% tracking, 12px */
+    .label {
+      font-weight: 800; font-size: 12px; line-height: 16px;
+      letter-spacing: .08em; text-transform: uppercase;
+    }
+
+    /* Sticker: green or pink fill, ink outline, hard shadow */
+    .sticker {
+      color: var(--green);
+      text-shadow:
+        2px 0 0 var(--ink), -2px 0 0 var(--ink),
+        0 2px 0 var(--ink), 0 -2px 0 var(--ink),
+        2px 2px 0 var(--ink), -2px -2px 0 var(--ink),
+        2px -2px 0 var(--ink), -2px 2px 0 var(--ink),
+        6px 6px 0 var(--ink);
+    }
+    .sticker--sun { color: var(--sun); }
+
+    /* Cards: thick ink border and hard shadow */
+    .card {
+      background: #fff;
+      border: var(--outline);
+      box-shadow: var(--hard);
+      transition: transform 260ms var(--spring), box-shadow 260ms var(--spring);
+    }
+    .card:hover { transform: translate(-2px, -2px); box-shadow: 6px 6px 0 var(--ink); }
+    .card:active { transform: translate(2px, 2px); box-shadow: 2px 2px 0 var(--ink); }
+    .card:focus-within { transform: translate(-2px, -2px); box-shadow: 6px 6px 0 var(--ink); }
+
+    /* Pill buttons with hard shadow. Every state included. */
+    .btn {
+      appearance: none;
+      display: inline-flex; align-items: center; justify-content: center;
+      min-height: 48px; padding: 12px 24px;
+      border: var(--outline); border-radius: 999px;
+      background: var(--green); color: var(--ink);
+      font-family: 'Inter', sans-serif; font-weight: 800;
+      font-size: 14px; line-height: 16px;
+      letter-spacing: .08em; text-transform: uppercase; text-decoration: none;
+      box-shadow: var(--hard);
+      cursor: pointer;
+      transition: transform 260ms var(--spring), box-shadow 260ms var(--spring), background-color 200ms var(--ease);
+    }
+    .btn:hover { transform: translate(-2px, -2px); box-shadow: 6px 6px 0 var(--ink); }
+    .btn:active { transform: translate(3px, 3px); box-shadow: 1px 1px 0 var(--ink); }
+    .btn:focus-visible { outline: 3px solid var(--hot); outline-offset: 3px; }
+    .btn--sun { background: var(--sun); }
+    .btn--sun:hover { background: var(--tangerine); }
+    .btn--ink { background: var(--ink); color: var(--paper); }
+    .btn--ink:hover { background: var(--hot); }
+    .btn--paper { background: var(--paper); }
+    .btn--paper:hover { background: var(--sun); }
+
+    /* Top bar, forest with logo */
+    .topbar {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 22px 20px; background: var(--forest);
+      border-bottom: var(--outline);
+    }
+    .topbar-logo {
+      display: inline-flex; transition: transform 260ms var(--spring);
+    }
+    .topbar-logo:hover { transform: rotate(-3deg) scale(1.04); }
+    .topbar-logo:active { transform: scale(.97); }
+    .topbar-logo:focus-visible { outline: 3px solid var(--sun); outline-offset: 4px; }
+    .topbar-logo img { width: 184px; }
+    .topbar .btn { min-height: 52px; padding: 14px 28px; font-size: 15px; }
+
+    /* Hero: forest panel, doodle-style radial shapes in the layered palette */
+    .hero {
+      position: relative; overflow: hidden;
+      background:
+        radial-gradient(circle at 12% 18%, rgba(251,227,36,.22) 0 14%, transparent 15%),
+        radial-gradient(circle at 88% 70%, rgba(248,2,137,.28) 0 20%, transparent 21%),
+        radial-gradient(circle at 70% 12%, rgba(155,214,244,.18) 0 12%, transparent 13%),
+        var(--forest);
+      padding: 56px 20px 96px;
+      border-bottom: var(--outline);
+    }
+    .hero-eyebrow { color: var(--sun); }
+    .hero-title {
+      margin-top: 16px;
+      font-size: clamp(44px, 13vw, 96px);
+      line-height: .95;
+    }
+    .hero-copy {
+      max-width: 36ch; margin-top: 24px;
+      color: var(--paper); font-size: 16px; line-height: 24px;
+    }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 16px; margin-top: 32px; }
+
+    /* Sticker stack: the page-load moment */
+    /* Artwork: 2x2 on phones, one flat row on larger screens, same shadow throughout */
+    .hero-stack {
+      display: grid; grid-template-columns: 1fr 1fr; align-items: start; gap: 24px 20px;
+      margin-top: 48px; padding: 16px 8px 24px 0;
+    }
+    .sticker-card {
+      position: relative; width: 100%;
+      background: var(--paper);
+      border: var(--outline); box-shadow: var(--hard-lg);
+      /* backwards fill: the entrance must not hold the transform, or hover stops working */
+      animation: sticker-in 620ms var(--spring) backwards;
+      transition: transform 280ms var(--spring);
+    }
+    .sticker-card:hover { transform: translateY(-6px); }
+    /* Each card takes its image's exact proportions, so the photo fills the box with no cropping. */
+    /* Phone: green tall on the left, small dog and burning church stacked on the right, smoke-and-sky pack large across the bottom */
+    .sticker-card--green { aspect-ratio: 1524 / 2173; background: var(--green); grid-column: 1; grid-row: span 2; }
+    .sticker-card--bart { aspect-ratio: 1523 / 1130; background: var(--sky); animation-delay: 220ms; grid-column: 2; grid-row: 1; margin-top: 14px; }
+    .sticker-card--bonet { aspect-ratio: 2126 / 1658; background: var(--paper); animation-delay: 330ms; grid-column: 2; grid-row: 2; }
+    .sticker-card--sun { aspect-ratio: 1193 / 756; background: var(--sun); animation-delay: 110ms; grid-column: 1 / -1; grid-row: 3; margin-top: 8px; }
+    .sticker-card img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
+    @keyframes sticker-in {
+      from { opacity: 0; transform: translateY(24px) scale(.9) rotate(-10deg); }
+    }
+
+    /* Drip divider: a green band with rounded drips hanging from its lower edge */
+    .drips {
+      height: 44px; background: var(--green);
+      -webkit-mask:
+        linear-gradient(#000 0 0) top / 100% 24px no-repeat,
+        radial-gradient(circle 14px at 50% 22px, #000 99%, transparent 100%) 0 0 / 56px 44px repeat-x;
+              mask:
+        linear-gradient(#000 0 0) top / 100% 24px no-repeat,
+        radial-gradient(circle 14px at 50% 22px, #000 99%, transparent 100%) 0 0 / 56px 44px repeat-x;
+    }
+
+    /* Sections */
+    .section { padding: 72px 20px; }
+    .section--green { background: var(--green); border-bottom: var(--outline); }
+    .section--sky { background: var(--sky); border-bottom: var(--outline); }
+    /* Artists lede: display type with the sticker outline, tilted like a stuck-on label */
+    .lede-display {
+      color: var(--hot);
+      font-family: 'Special Gothic Expanded One', sans-serif;
+      font-size: clamp(26px, 6vw, 40px); line-height: 1.1; letter-spacing: -0.01em;
+      text-transform: uppercase; max-width: none;
+      margin-top: 12px; transform: rotate(-2deg); transform-origin: left center;
+    }
+
+    /* Artist tags: each one is a sticker, tilted a little differently */
+    .tags { list-style: none; display: grid; grid-template-columns: repeat(2, max-content); justify-content: space-between; gap: 18px 12px; margin-top: 32px; }
+    .tag {
+      display: inline-block; padding: 10px 14px;
+      font-family: 'Special Gothic Expanded One', sans-serif; font-size: 14px; line-height: 1;
+      color: var(--ink); text-decoration: none;
+      background: var(--paper); border: var(--outline); box-shadow: var(--hard);
+      transform: rotate(var(--tilt, 0deg));
+      transition: transform 280ms var(--spring);
+    }
+    .tags li:nth-child(4n+1) .tag { --tilt: -3deg; background: var(--sun); }
+    .tags li:nth-child(4n+2) .tag { --tilt: 2deg;  background: var(--forest); color: var(--paper); }
+    .tags li:nth-child(4n+3) .tag { --tilt: -1.5deg; background: var(--green); }
+    .tags li:nth-child(4n+4) .tag { --tilt: 3.5deg; background: var(--bubble); }
+    .tag:hover { transform: rotate(0deg) translateY(-4px) scale(1.04); }
+    .tag:active { transform: rotate(0deg) scale(.97); }
+    .tag:focus-visible { outline: 3px solid var(--hot); outline-offset: 4px; }
+    .handles-ours { margin-top: 40px; display: flex; flex-wrap: wrap; align-items: center; gap: 12px; font-size: 16px; }
+    .tag--ours { --tilt: -2deg; background: var(--hot); color: var(--paper); font-size: 20px; padding: 16px 22px; }
+    .tag--ours:hover { transform: rotate(0deg) translateY(-4px) scale(1.04); }
+    .section--paper { background: var(--paper); }
+    .section-title { font-size: clamp(36px, 9vw, 60px); margin-bottom: 32px; }
+    .lede { max-width: 44ch; }
+    .grid { display: grid; gap: 24px; }
+    .feature { padding: 24px; }
+    .feature h3 { font-size: 22px; margin: 12px 0 8px; line-height: 1.1; }
+
+    /* Artwork frames: gradient overlay plus multiply colour treatment */
+    .art {
+      position: relative; overflow: hidden; margin: 0;
+      border: var(--outline); box-shadow: var(--hard);
+      background: var(--forest);
+    }
+    .art img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; }
+    .art::before {
+      content: ""; position: absolute; inset: 0; pointer-events: none; z-index: 1;
+      background: linear-gradient(to top, rgba(0,0,0,.6), transparent 60%);
+    }
+    .art::after {
+      content: ""; position: absolute; inset: 0; pointer-events: none; z-index: 2;
+      background: var(--forest); mix-blend-mode: multiply; opacity: .2;
+    }
+    .art figcaption {
+      position: absolute; left: 16px; bottom: 16px; z-index: 3; color: var(--paper);
+    }
+
+    /* New drop burst */
+    .drop-row { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; margin-top: 32px; }
+    .drop-burst {
+      width: 120px; aspect-ratio: 1; display: grid; place-items: center; text-align: center;
+      background: var(--hot); color: var(--paper);
+      clip-path: polygon(50% 0%, 61% 18%, 82% 8%, 80% 30%, 100% 36%, 86% 52%, 100% 70%, 78% 74%, 80% 96%, 60% 86%, 50% 100%, 40% 86%, 20% 96%, 22% 74%, 0% 70%, 14% 52%, 0% 36%, 20% 30%, 18% 8%, 39% 18%);
+      font-family: 'Special Gothic Expanded One', sans-serif; font-size: 14px; line-height: 1;
+      text-transform: uppercase;
+      transition: transform 320ms var(--spring);
+    }
+    .drop-burst:hover { transform: rotate(-8deg) scale(1.06); }
+
+    /* Join block: sun pop accent */
+    .pop {
+      background: var(--sun); border: var(--outline); box-shadow: var(--hard-lg);
+      padding: 32px 24px;
+    }
+    .pop h2 { font-size: clamp(32px, 8vw, 52px); }
+
+    /* Age gate */
+    .gate {
+      position: fixed; inset: 0; z-index: 50;
+      display: grid; place-items: center; padding: 20px;
+      background: rgba(0, 63, 1, .8);
+    }
+    .gate[hidden] { display: none; }
+    .gate-card {
+      width: min(440px, 100%); padding: 28px;
+      background: var(--paper); border: var(--outline); box-shadow: var(--hard-lg);
+      animation: gate-in 420ms var(--spring) both;
+    }
+    .gate-card h2 { font-size: clamp(30px, 8vw, 40px); margin: 10px 0 14px; }
+    .gate-card p { margin-bottom: 24px; }
+    .gate-actions { display: flex; flex-wrap: wrap; gap: 16px; }
+    @keyframes gate-in {
+      from { opacity: 0; transform: translateY(16px) scale(.96); }
+      to   { opacity: 1; transform: none; }
+    }
+
+    /* Footer: ink, with the legal line */
+    .footer { background: var(--ink); color: var(--paper); padding: 32px 20px; }
+    .footer p { font-size: 14px; line-height: 22px; }
+    .footer strong { color: var(--sun); }
+    .sign-off {
+      font-family: 'Special Gothic Expanded One', sans-serif; text-transform: uppercase;
+      font-size: clamp(28px, 7vw, 52px); line-height: 1.05; letter-spacing: -0.01em;
+      color: var(--green); max-width: 16ch; margin-bottom: 40px;
+    }
+    .footer-links { display: flex; flex-wrap: wrap; gap: 12px 20px; margin-top: 16px; }
+    .footer-links a {
+      display: inline-block; font-weight: 500; text-decoration: none;
+      transition: transform 200ms var(--spring), color 200ms var(--ease);
+    }
+    .footer-links a:hover { color: var(--green); transform: translateY(-2px); }
+    .footer-links a:active { transform: translateY(1px); }
+    .footer-links a:focus-visible { outline: 3px solid var(--hot); outline-offset: 4px; }
+
+    /* Motion: transform and opacity only. Entrances use backwards fill so hover states still work after they finish. */
+    .js .hero-title .word {
+      display: inline-block;
+      animation: word-in 700ms var(--spring) backwards;
+      animation-delay: calc(var(--i) * 90ms + 200ms);
+    }
+    @keyframes word-in {
+      from { opacity: 0; transform: translateY(40%); }
+    }
+
+    .js .reveal:not(.is-visible) { opacity: 0; }
+    .js .reveal.is-visible.reveal--rise {
+      animation: rise 800ms var(--ease) backwards;
+      animation-delay: var(--reveal-delay, 0ms);
+    }
+    .js .drips.reveal--drip { transform-origin: 50% 0; }
+    .js .reveal.is-visible.reveal--drip {
+      animation: drip 900ms var(--ease) backwards;
+    }
+    @keyframes rise {
+      from { opacity: 0; transform: translateY(28px); }
+    }
+    @keyframes drip {
+      from { opacity: 0; transform: scaleY(0); }
+    }
+
+    /* Breakpoints */
+    @media (min-width: 760px) {
+      .topbar { padding: 32px 48px; }
+      .topbar-logo img { width: 268px; }
+      .topbar .btn { min-height: 60px; padding: 18px 38px; font-size: 18px; }
+      .hero { padding: 104px 48px 128px; }
+      /* Desktop: one row that fills the page width, slightly staggered, never overlapping */
+      .hero-stack { display: flex; align-items: flex-start; gap: 20px; padding: 40px 0 56px; }
+      .sticker-card--green { width: calc((100% - 60px) * .19); margin-top: 0; }
+      .sticker-card--sun { width: calc((100% - 60px) * .34); }
+      .sticker-card--bart { width: calc((100% - 60px) * .16); }
+      .sticker-card--bonet { width: calc((100% - 60px) * .31); }
+      .sticker-card--sun { margin-top: 40px; grid-column: auto; grid-row: auto; }
+      .sticker-card--bart { margin-top: 12px; grid-column: auto; grid-row: auto; }
+      .sticker-card--bonet { margin-top: 64px; grid-column: auto; grid-row: auto; }
+      .sticker-card--green { grid-column: auto; grid-row: auto; }
+      .tags { display: grid; grid-template-columns: repeat(4, max-content); justify-content: start; gap: 18px 16px; }
+      .tag { font-size: 16px; padding: 12px 18px; }
+      .section { padding: 104px 48px; }
+      .grid--3 { grid-template-columns: repeat(3, 1fr); }
+      .split { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; }
+      .footer { padding: 40px 48px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation: none !important; transition-duration: 0ms !important; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Age gate: adults only. Leave goes away from the site. -->
+  <div class="gate" id="gate" role="dialog" aria-modal="true" aria-labelledby="gate-title">
+    <div class="gate-card">
+      <p class="label">Adults only, sorry!</p>
+      <h2 id="gate-title">Are you 18+?</h2>
+      <p>Confirm you&rsquo;re 18+ to enter the glow.</p>
+      <div class="gate-actions">
+        <button class="btn btn--ink" type="button" id="gate-yes">I am 18+</button>
+        <a class="btn btn--paper" href="https://www.google.com">Leave</a>
+      </div>
+    </div>
+  </div>
+
+  <header class="topbar">
+    <a class="topbar-logo" href="#top" aria-label="Afterglow home">
+      <img src="img/afterglow-logo.png" width="160" height="73" alt="Afterglow">
+    </a>
+    <a class="btn btn--sun" href="#join">Join</a>
+  </header>
+
+  <main id="top">
+    <section class="hero" aria-labelledby="hero-title">
+      <h1 class="hero-title sticker sticker--sun" id="hero-title">Bringing the passion from California</h1>
+      <div class="hero-stack" aria-hidden="true">
+        <div class="sticker-card sticker-card--green"><img src="img/bear-bag-zach-oreo.png" alt="" loading="lazy"></div>
+        <div class="sticker-card sticker-card--sun"><img src="img/konair-noriaki-disposable.png" alt="" loading="lazy"></div>
+        <div class="sticker-card sticker-card--bart"><img src="img/bart-dog-rectangle.png" alt="" loading="lazy"></div>
+        <div class="sticker-card sticker-card--bonet"><img src="img/Bonet_Front_Afterglow_Infused_Gummies_web.jpg" alt="" loading="lazy"></div>
+      </div>
+    </section>
+    <div class="drips" aria-hidden="true" style="background: var(--sky);"></div>
+
+    <section class="section section--sky" aria-labelledby="artists-title">
+      <h2 class="section-title" id="artists-title">Artists</h2>
+      <p class="lede-display">Past, present and future.</p>
+      <ul class="tags">
+        <li><a class="tag" href="https://www.instagram.com/albertbonet1/" target="_blank" rel="noopener noreferrer">@albertbonet1</a></li>
+        <li><a class="tag" href="https://www.instagram.com/badassbearz/" target="_blank" rel="noopener noreferrer">@badassbearz</a></li>
+        <li><a class="tag" href="https://www.instagram.com/bartsucharski/" target="_blank" rel="noopener noreferrer">@bartsucharski</a></li>
+        <li><a class="tag" href="https://www.instagram.com/elxupetnegre/" target="_blank" rel="noopener noreferrer">@elxupetnegre</a></li>
+        <li><a class="tag" href="https://www.instagram.com/expandedeye/" target="_blank" rel="noopener noreferrer">@expandedeye</a></li>
+        <li><a class="tag" href="https://www.instagram.com/konair/" target="_blank" rel="noopener noreferrer">@konair</a></li>
+        <li><a class="tag" href="https://www.instagram.com/noriakinoriaki/" target="_blank" rel="noopener noreferrer">@noriakinoriaki</a></li>
+        <li><a class="tag" href="https://www.instagram.com/pezbarcelona/" target="_blank" rel="noopener noreferrer">@pezbarcelona</a></li>
+      </ul>
+      <p class="handles-ours">Follow us <a class="tag tag--ours" href="https://www.instagram.com/aftergloweurope/" target="_blank" rel="noopener noreferrer">@aftergloweurope</a></p>
+    </section>
+    <div class="drips" aria-hidden="true"></div>
+
+    <section class="section section--green" aria-labelledby="inside-title">
+      <h2 class="section-title" id="inside-title" style="margin-bottom: 16px;">Who we are</h2>
+      <p class="lede-display" style="margin-bottom: 32px;">Growers from California, makers in Spain.</p>
+      <div class="grid grid--3">
+        <article class="card feature">
+          <p class="label">Until 2019</p>
+          <h3>California roots</h3>
+          <p>We grew in California until 2019. The sun did the hard part.</p>
+        </article>
+        <article class="card feature">
+          <p class="label">2019</p>
+          <h3>Made in Spain</h3>
+          <p>We moved to Spain and started making vapes.</p>
+        </article>
+        <article class="card feature">
+          <p class="label">2021</p>
+          <h3>Organic gummies</h3>
+          <p>We partnered with local organic growers to make our gummies.</p>
+        </article>
+      </div>
+    </section>
+    <div class="drips" aria-hidden="true" style="background: var(--paper);"></div>
+
+    <section class="section section--paper" id="join" aria-labelledby="join-title">
+      <div class="pop">
+        <h2 id="join-title">Keep the glow.</h2>
+        <p class="lede" style="margin: 16px 0 28px;">Join the community for early access, artist news and drop alerts. 18+ only.</p>
+        <a class="btn btn--ink" href="#join">Join the community</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p class="sign-off">Sunshine with attitude. Catch the drops and keep the glow going.</p>
+    <p><strong>Legal:</strong> Adults only. Afterglow content is for people aged 18+. Spain restricts cannabis advertising and sales, so nothing on this page is a product claim or a health claim.</p>
+    <p style="margin-top: 12px;">Afterglow (AG) · Cannabis lifestyle brand · Spain &amp; EU</p>
+    <nav class="footer-links" aria-label="Social and legal">
+      <a href="https://www.instagram.com/aftergloweurope/" target="_blank" rel="noopener noreferrer">@aftergloweurope</a>
+      <a href="#contact">Contact</a>
+      <a href="#terms">Terms</a>
+    </nav>
+  </footer>
+
+  <script>
+    (function () {
+      var gate = document.getElementById('gate');
+      var yes = document.getElementById('gate-yes');
+      var KEY = 'afterglow:age-confirmed';
+      var confirmed = false;
+      try { confirmed = sessionStorage.getItem(KEY) === '1'; } catch (e) {}
+      if (confirmed) { gate.hidden = true; return; }
+      yes.focus();
+      yes.addEventListener('click', function () {
+        try { sessionStorage.setItem(KEY, '1'); } catch (e) {}
+        gate.hidden = true;
+        document.dispatchEvent(new Event('afterglow:entered'));
+      });
+    })();
+  </script>
+  <script>
+    (function () {
+      var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (reduce) return;
+
+      // Hero tagline: build word by word on load.
+      var hero = document.getElementById('hero-title');
+      if (hero) {
+        var words = hero.textContent.trim().split(/\s+/);
+        hero.innerHTML = words.map(function (w, i) {
+          return '<span class="word" style="--i:' + i + '">' + w + '</span>';
+        }).join(' ');
+      }
+
+      // Scroll reveals: cards and join block rise, dividers drip in.
+      var rise = document.querySelectorAll('.feature, .pop, .section-title');
+      var drips = document.querySelectorAll('.drips');
+      if (!('IntersectionObserver' in window)) return;
+      rise.forEach(function (el, i) {
+        el.classList.add('reveal', 'reveal--rise');
+        el.style.setProperty('--reveal-delay', (i % 3) * 90 + 'ms');
+      });
+      drips.forEach(function (el) { el.classList.add('reveal', 'reveal--drip'); });
+
+      // Nothing reveals behind the age gate. Checks run once the gate is gone, then on scroll and resize.
+      var gateEl = document.getElementById('gate');
+      function gateOpen() { return !gateEl || gateEl.hidden; }
+      var pending = Array.prototype.slice.call(rise).concat(Array.prototype.slice.call(drips));
+      function revealInView() {
+        if (!gateOpen()) return;
+        var limit = window.innerHeight * 0.92;
+        pending = pending.filter(function (el) {
+          var r = el.getBoundingClientRect();
+          if (r.top < limit && r.bottom > 0) {
+            el.classList.add('is-visible');
+            return false;
+          }
+          return true;
+        });
+        if (!pending.length) {
+          window.removeEventListener('scroll', revealInView);
+          window.removeEventListener('resize', revealInView);
+        }
+      }
+      window.addEventListener('scroll', revealInView, { passive: true });
+      window.addEventListener('resize', revealInView);
+      document.addEventListener('afterglow:entered', revealInView);
+      revealInView();
+    })();
+  </script>
+</body>
+</html>
