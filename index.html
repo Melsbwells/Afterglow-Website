@@ -210,10 +210,15 @@
       transform: rotate(var(--tilt, 0deg));
       transition: transform 280ms var(--spring);
     }
-    .tags li:nth-child(4n+1) .tag { --tilt: -3deg; background: var(--sun); }
-    .tags li:nth-child(4n+2) .tag { --tilt: 2deg;  background: var(--forest); color: var(--paper); }
-    .tags li:nth-child(4n+3) .tag { --tilt: -1.5deg; background: var(--green); }
-    .tags li:nth-child(4n+4) .tag { --tilt: 3.5deg; background: var(--bubble); }
+    /* Colors are hand-sequenced so no tag matches its left/right neighbor or the tag above/below it, in either grid layout */
+    .tags li:nth-child(8n+1) .tag { --tilt: -3deg;   background: var(--sun); }
+    .tags li:nth-child(8n+2) .tag { --tilt: 2deg;    background: var(--forest); color: var(--paper); }
+    .tags li:nth-child(8n+3) .tag { --tilt: -1.5deg; background: var(--green); }
+    .tags li:nth-child(8n+4) .tag { --tilt: 3.5deg;  background: var(--tangerine); }
+    .tags li:nth-child(8n+5) .tag { --tilt: -2.5deg; background: var(--bubble); }
+    .tags li:nth-child(8n+6) .tag { --tilt: 1.5deg;  background: var(--green); }
+    .tags li:nth-child(8n+7) .tag { --tilt: -3.5deg; background: var(--tangerine); }
+    .tags li:nth-child(8n+8) .tag { --tilt: 2.5deg;  background: var(--sun); }
     .tag:hover { transform: rotate(0deg) translateY(-4px) scale(1.04); }
     .tag:active { transform: rotate(0deg) scale(.97); }
     .tag:focus-visible { outline: 3px solid var(--hot); outline-offset: 4px; }
